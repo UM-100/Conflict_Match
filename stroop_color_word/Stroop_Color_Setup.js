@@ -1,6 +1,6 @@
 
 
-var keyboard_conflict = "stimu/StroopColorsKeyboard3.png";
+//var keyboard_conflict = "stimu/StroopColorsKeyboard3.png";
 
 
 var Check_permission = [
@@ -12,9 +12,10 @@ var Check_permission = [
 
 var ColorWordInstrText = [
       '<p>接下来，屏幕中间会出现一个单词。您需要判断该单词是用什么颜色呈现的（而不是这个单词的含义）。<br/>\
-	  请根据下方图片所示，按下颜色对应的按键</p><img src="' + keyboard_conflict + '"></img>',
-      '<p>在进入正式实验之前，你将进行练习。在此部分，我们将会向您告知判断是否准确。</p>',
-	  '<p>如果你明白了规则，请点击继续，开始练习。</p>',];
+	  请根据下方图片所示，按下颜色对应的按键<br/>\
+	  红色请按F键，蓝色请按J键<br/>\
+      在进入正式实验之前，你将进行练习。在此部分，我们将会向您告知判断是否准确。<br/>\
+	  如果你明白了规则，请点击继续，开始练习。</p>'];
 
 var ColorWordInstrPoorPerformanceText = ['<p>您没有通过练习</p> <p>请又快又准地进行按键反应。</p>'];
 
@@ -39,12 +40,12 @@ var ColorWordPracticeRepeats = 1
 var ColorWordTestRepeats = 1
 
 
-function PutIntoTable(top='top', middle='mid', width=600, height=250, img_path=keyboard_conflict) {
+/*function PutIntoTable(top='top', middle='mid', width=600, height=250, img_path=keyboard_conflict) {
    return '<table border="0" width="'+width+'"><tr height="'+height+'"><td>'+top+'</td></tr><tr height="'+height+'">'+
           '<td><div style="font-size:60px;">'+middle+'</div></td></tr><tr height="'+height+'">'+
           '<td valign="bottom"><img src="'+ keyboard_conflict +'"></td></tr></table>';
  }
-
+*/
 
 
 /* ========================================================= 
