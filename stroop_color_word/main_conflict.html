@@ -15,10 +15,12 @@
   <script src="jspsych-6.2.0/plugins/jspsych-instructions.js"></script>
   <script type="text/javascript" src="Stroop_Color_Setup.js"></script>
   <link href="jspsych-6.2.0/css/jspsych.css" rel="stylesheet" type="text/css">
-  <style>
-    .stimulus {
-      font-size: StimulusFontSize;
-    }
+    <style>
+        .test {
+            font-size: 90px;
+            font-weight: bold;
+            color: white;
+        }
   </style>
 
   <head>
@@ -79,7 +81,7 @@
       return '<p class="stimulus" style="color:rgb'+jsPsych.timelineVariable('Color', true)+';">' +jsPsych.timelineVariable('Word', true)+'</p>'; 
       //var temp = PutIntoTable('', Stim)
       //return temp;
-      //return '<p class="stimulus" style="color:rgb'+jsPsych.timelineVariable('Color', true)+';">' +jsPsych.timelineVariable('Word', true)+'</p>'; 
+      //return '<p class="stimulus" font-size:'60px' style="color:rgb'+jsPsych.timelineVariable('Color', true)+';">' +jsPsych.timelineVariable('Word', true)+'</p>'; 
     },
     choices: ResponseChoices,
     post_trial_gap: 0,
@@ -119,7 +121,7 @@
   var fixation = {
     type: 'html-keyboard-response',
     stimulus: "+",
-
+    css_classes: ['test'],
     //return '<div style="font-size:60px;">+</div><p><p><img src="StroopColorsKeyboard.png" style="position:relative; bottom:-200px">'},
     choices: jsPsych.NO_KEYS,
     trial_duration: function () {
