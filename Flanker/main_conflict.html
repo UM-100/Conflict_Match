@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Flanker Task Conflict</title>
+    <script src="jspsych.js"></script>
+    <script src="plugins/jspsych-fullscreen.js"></script>
+    <script src="plugins/jspsych-preload.js"></script>
+    <script src="plugins/jspsych-instructions.js"></script>
+    <script src="plugins/jspsych-html-keyboard-response.js"></script>
+    <script src="plugins/jspsych-html-button-response.js"></script>
+    <script src="plugins/jspsych-image-keyboard-response.js"></script>
+    <link rel="stylesheet" href="css/jspsych.css">
+
+    <style>
+        .childElement {
+            font-size: large;
+        }
+    </style>
+
+    <head>
+        <style>
+            body {
+                background-color: rgb(128, 128, 128);
+                color: white;
+            }
+        </style>
+    </head>
+
+</head>
+
+<body></body>
+<script>
+
+
+    /* experiment parameters */
+    var reps_per_trial_type = 1;
+
+    var Check_permission = {
+        type: 'instructions',
+        pages: [
+            '<p>您好，欢迎参加本次实验。<br/>\
+     为充分保障您的权利，请确保你已经知晓并同意《参与实验同意书》以及《数据公开知情同意书》。<br/>\
+     如果你未见过上述内容，请咨询实验员。<br/>\
+     如果您选择继续实验，则表示您已经清楚两份知情同意书的内容并同意。<br/>\
+     点击继续进入下页。</p>'],
+        show_clickable_nav: true
+    }
+
+
+    /*set up instructions block*/
+    var instructions = {
+        type: 'html-keyboard-response',
+        stimulus: "<p>In this task, you will see five arrows on the screen, like the example below.</p>" +
+            "<img src='stimu/inc1.png'></img>" +
+            "<p>如果中间的箭头指向左边则摁左箭头 (<)</p>" +
+            "<p>如果中间的箭头指向右边则摁右箭头 (>)</p>" +
+            "<p>按任意键继续</p>",
+        post_trial_gap: 1000
+    };
+
+    /*defining stimuli*/
+    var test_stimuli = [
+        {
+            stimulus: "<<<<<",
+            data: { stim_type: 'congruent', direction: 'left' }
+        },
+        {
+            stimulus: ">>>>>",
+            data: { stim_type: 'congruent', direction: 'right' }
+        },
+        {
+            stimulus: "<<><<",
+            data: { stim_type: 'incongruent', direction: 'right' }
+        },
+        {
+            stimulus: ">><>>",
+            data: { stim_type: 'incongruent', direction: 'left' }
+        }
+    ];
+
+
+    /* defining test timeline */
+    var test = {
+        timeline: [{
+            type: 'html-keyboard-response',
+            choices: ['ArrowLeft', 'ArrowRight'],
+            trial_duration: 1500,
+            stimulus: jsPsych.timelineVariable('stimulus'),
+            data: jsPsych.timelineVariable('data'),
+            on_finish: function (data) {
+                var correct = false;
+                if (data.direction == 'left' && jsPsych.pluginAPI.compareKeys(data.response, 'ArrowLeft') && data.rt > -1) {
+                    correct = true;
+                } else if (data.direction == 'right' && jsPsych.pluginAPI.compareKeys(data.response, 'ArrowRight') && data.rt > -1) {
+                    correct = true;
+                }
+                data.correct = correct;
+            },
+            //post_trial_gap: function () {
+            // return Math.floor(Math.random() * 1500) + 500;
+
+            //}
+        }],
+        timeline_variables: test_stimuli,
+        randomize_order: true,
+        sample: { type: 'fixed-repetitions', size: reps_per_trial_type }
+    };
+
+    /*defining debriefing block*/
+    var debrief = {
+        type: 'html-keyboard-response',
+        stimulus: function () {
+            var total_trials = jsPsych.data.get().filter({ trial_type: 'html-keyboard-response' }).count() - 1;
+            var accuracy = Math.round(jsPsych.data.get().filter({ correct: true }).count() / total_trials * 100);
+            var congruent_rt = Math.round(jsPsych.data.get().filter({ correct: true, stim_type: 'congruent' }).select('rt').mean());
+            var incongruent_rt = Math.round(jsPsych.data.get().filter({ correct: true, stim_type: 'incongruent' }).select('rt').mean());
+            return "<p>您的正确率为 <strong>" + accuracy + "%</strong> 。</p> " +
+                "<p>相容任务中的平均反应时 <strong>" + congruent_rt + "ms</strong>.</p>" +
+                "<p>不相容任务中的平均反应时 <strong>" + incongruent_rt + "ms</strong>.</p>" +
+                "<p>请按任意键完成实验. 感谢您的参与！</p>";
+        }
+    };
+
+    // manually preload images due to presenting them with timeline variables
+    var images = ["stimu/con1.png", "stimu/con2.png", "stimu/inc1.png", "stimu/inc2.png"];
+    var preload = {
+        type: 'preload',
+        images: images
+    };
+
+    /*set up experiment structure*/
+    var timeline = [];
+    timeline.push(preload);
+    timeline.push(Check_permission);
+    timeline.push({
+        type: 'fullscreen',
+        fullscreen_mode: true
+    });
+    timeline.push(instructions);
+    timeline.push(test);
+    timeline.push(debrief);
+
+    /*start experiment*/
+
+    jsPsych.init({
+        default_iti: 350,
+        timeline: timeline,
+        on_interaction_data_update: function (data) {
+            console.log(JSON.stringify(data))
+        },
+        on_finish: function () {
+            jsPsych.data.get().localSave('csv', 'FlankerMydata.csv');
+        }
+
+    });
+
+</script>
+
+</html>
