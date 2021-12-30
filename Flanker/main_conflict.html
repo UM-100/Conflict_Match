@@ -54,7 +54,10 @@
             "<p>如果中间的箭头指向左边则摁左箭头 (<)</p>" +
             "<p>如果中间的箭头指向右边则摁右箭头 (>)</p>" +
             "<p>按任意键继续</p>",
-        post_trial_gap: 1000
+        post_trial_gap: 1000，
+        on_finish: function () {
+      $("body").css("cursor", "none");
+    } 
     };
 
     /*defining stimuli*/
