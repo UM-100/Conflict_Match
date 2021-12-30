@@ -51,7 +51,12 @@
      点击继续进入下页。</p>'],
         show_clickable_nav: true
     };
-
+    var cursor_off = {
+        type: 'call-function',
+        func: function () {
+            document.body.style.cursor = "none";
+        }
+    };
 
     /*set up instructions block*/
     var instructions = {
@@ -84,12 +89,7 @@
         }
     ];
 
-    var cursor_off = {
-        type: 'call-function',
-        func: function () {
-            document.body.style.cursor = "none";
-        }
-    };
+
     /* defining test timeline */
     var test = {
         timeline: [{
