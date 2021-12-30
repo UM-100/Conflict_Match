@@ -120,8 +120,9 @@
 
   var fixation = {
     type: 'html-keyboard-response',
-    stimulus: "+",
-    css_classes: ['test'],
+    stimulus: function () {
+      return "<div style='font-size:60px'>+</div>"
+    },
     //return '<div style="font-size:60px;">+</div><p><p><img src="StroopColorsKeyboard.png" style="position:relative; bottom:-200px">'},
     choices: jsPsych.NO_KEYS,
     trial_duration: function () {
@@ -140,9 +141,9 @@
     stimulus: function () {
       var last_trial_correct = jsPsych.data.get().last(1).values()[0].correct;
       if (last_trial_correct) {
-        return 'Correct!';
+        return "<div style='font-size:60px'>Correct!</div>"
       } else {
-        return 'Incorrect';
+        return "<div style='font-size:60px'>Incorrect</div>"
       }
     }
   }
