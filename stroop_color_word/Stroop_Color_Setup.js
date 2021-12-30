@@ -25,7 +25,7 @@ var ColorWordThankYouText = '感谢您的参与，本次实验结束。'
 
 /* If the response choice get modified here they also need to be modified below
 */
-var ResponseChoices = ['c','v','b','n','m',27] //escape = 27 in javascript-keycode-list-keypress-event-key-codes
+var ResponseChoices = ['f','j',27] //escape = 27 in javascript-keycode-list-keypress-event-key-codes
 
 var FeedbackLength = 400; // This is in milliseconds
 
@@ -54,152 +54,26 @@ var StroopColorWordList_C = [
  {
    "Word": "红色",
    "Congruency": "Con",
-   "letter": "c",
+   "letter": "f",
    "Color": "(255,0,0)"
  },
  {
    "Word": "红色",
    "Congruency": "Incon",
-   "letter": "v",
+   "letter": "j",
    "Color": "(0,0,255)"
- },
- {
-   "Word": "红色",
-   "Congruency": "Incon",
-   "letter": "b",
-   "Color": "(0,128,0)"
- },
- {
-   "Word": "红色",
-   "Congruency": "Incon",
-   "letter": "n",
-   "Color": "(150,75,0)"
- },
- {
-   "Word": "红色",
-   "Congruency": "Incon",
-   "letter": "m",
-   "Color": "(128,0,255)"
  },
  {
    "Word": "蓝色",
    "Congruency": "Incon",
-   "letter": "c",
+   "letter": "f",
    "Color": "(255,0,0)"
  },
  {
    "Word": "蓝色",
    "Congruency": "Con",
-   "letter": "v",
+   "letter": "j",
    "Color": "(0,0,255)"
- },
- {
-   "Word": "蓝色",
-   "Congruency": "Incon",
-   "letter": "b",
-   "Color": "(0,128,0)"
- },
- {
-   "Word": "蓝色",
-   "Congruency": "Incon",
-   "letter": "n",
-   "Color": "(150,75,0)"
- },
- {
-   "Word": "蓝色",
-   "Congruency": "Incon",
-   "letter": "m",
-   "Color": "(128,0,255)"
- },
- {
-   "Word": "绿色",
-   "Congruency": "Incon",
-   "letter": "c",
-   "Color": "(255,0,0)"
- },
- {
-   "Word": "绿色",
-   "Congruency": "Incon",
-   "letter": "v",
-   "Color": "(0,0,255)"
- },
- {
-   "Word": "绿色",
-   "Congruency": "Con",
-   "letter": "b",
-   "Color": "(0,128,0)"
- },
- {
-   "Word": "绿色",
-   "Congruency": "Incon",
-   "letter": "n",
-   "Color": "(150,75,0)"
- },
- {
-   "Word": "绿色",
-   "Congruency": "Incon",
-   "letter": "m",
-   "Color": "(128,0,255)"
- },
- {
-   "Word": "棕色",
-   "Congruency": "Incon",
-   "letter": "c",
-   "Color": "(255,0,0)"
- },
- {
-   "Word": "棕色",
-   "Congruency": "Incon",
-   "letter": "v",
-   "Color": "(0,0,255)"
- },
- {
-   "Word": "棕色",
-   "Congruency": "Incon",
-   "letter": "b",
-   "Color": "(0,128,0)"
- },
- {
-   "Word": "棕色",
-   "Congruency": "Con",
-   "letter": "n",
-   "Color": "(150,75,0)"
- },
- {
-   "Word": "棕色",
-   "Congruency": "Incon",
-   "letter": "m",
-   "Color": "(128,0,255)"
- },
- {
-   "Word": "紫色",
-   "Congruency": "Incon",
-   "letter": "c",
-   "Color": "(255,0,0)"
- },
- {
-   "Word": "紫色",
-   "Congruency": "Incon",
-   "letter": "v",
-   "Color": "(0,0,255)"
- },
- {
-   "Word": "紫色",
-   "Congruency": "Incon",
-   "letter": "b",
-   "Color": "(0,128,0)"
- },
- {
-   "Word": "紫色",
-   "Congruency": "Incon",
-   "letter": "n",
-   "Color": "(150,75,0)"
- },
- {
-   "Word": "紫色",
-   "Congruency": "Con",
-   "letter": "m",
-   "Color": "(128,0,255)"
  }
 ];
 
@@ -211,151 +85,24 @@ var StroopColorWordList_M = [
  {
    "Word": "红色",
    "Congruency": "Match",
-   "letter": "c",
+   "letter": "f",
    "Color": "(255,0,0)"
  },
  {
    "Word": "红色",
    "Congruency": "Mismatch",
-   "letter": "v",
+   "letter": "j",
    "Color": "(0,0,255)"
- },
- {
-   "Word": "红色",
-   "Congruency": "Mismatch",
-   "letter": "b",
-   "Color": "(0,128,0)"
- },
- {
-   "Word": "红色",
-   "Congruency": "Mismatch",
-   "letter": "n",
-   "Color": "(150,75,0)"
- },
- {
-   "Word": "红色",
-   "Congruency": "Mismatch",
-   "letter": "m",
-   "Color": "(128,0,255)"
  },
  {
    "Word": "蓝色",
    "Congruency": "Mismatch",
-   "letter": "c",
+   "letter": "f",
    "Color": "(255,0,0)"
  },
  {
    "Word": "蓝色",
    "Congruency": "Match",
-   "letter": "v",
+   "letter": "j",
    "Color": "(0,0,255)"
- },
- {
-   "Word": "蓝色",
-   "Congruency": "Mismatch",
-   "letter": "b",
-   "Color": "(0,128,0)"
- },
- {
-   "Word": "蓝色",
-   "Congruency": "Mismatch",
-   "letter": "n",
-   "Color": "(150,75,0)"
- },
- {
-   "Word": "蓝色",
-   "Congruency": "Mismatch",
-   "letter": "m",
-   "Color": "(128,0,255)"
- },
- {
-   "Word": "绿色",
-   "Congruency": "Mismatch",
-   "letter": "c",
-   "Color": "(255,0,0)"
- },
- {
-   "Word": "绿色",
-   "Congruency": "Mismatch",
-   "letter": "v",
-   "Color": "(0,0,255)"
- },
- {
-   "Word": "绿色",
-   "Congruency": "Match",
-   "letter": "b",
-   "Color": "(0,128,0)"
- },
- {
-   "Word": "绿色",
-   "Congruency": "Mismatch",
-   "letter": "n",
-   "Color": "(150,75,0)"
- },
- {
-   "Word": "绿色",
-   "Congruency": "Mismatch",
-   "letter": "m",
-   "Color": "(128,0,255)"
- },
- {
-   "Word": "棕色",
-   "Congruency": "Mismatch",
-   "letter": "c",
-   "Color": "(255,0,0)"
- },
- {
-   "Word": "棕色",
-   "Congruency": "Mismatch",
-   "letter": "v",
-   "Color": "(0,0,255)"
- },
- {
-   "Word": "棕色",
-   "Congruency": "Mismatch",
-   "letter": "b",
-   "Color": "(0,128,0)"
- },
- {
-   "Word": "棕色",
-   "Congruency": "Match",
-   "letter": "n",
-   "Color": "(150,75,0)"
- },
- {
-   "Word": "棕色",
-   "Congruency": "Mismatch",
-   "letter": "m",
-   "Color": "(128,0,255)"
- },
- {
-   "Word": "紫色",
-   "Congruency": "Mismatch",
-   "letter": "c",
-   "Color": "(255,0,0)"
- },
- {
-   "Word": "紫色",
-   "Congruency": "Mismatch",
-   "letter": "v",
-   "Color": "(0,0,255)"
- },
- {
-   "Word": "紫色",
-   "Congruency": "Mismatch",
-   "letter": "b",
-   "Color": "(0,128,0)"
- },
- {
-   "Word": "紫色",
-   "Congruency": "Mismatch",
-   "letter": "n",
-   "Color": "(150,75,0)"
- },
- {
-   "Word": "紫色",
-   "Congruency": "Match",
-   "letter": "m",
-   "Color": "(128,0,255)"
- }
-];
+ }];
