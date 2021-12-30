@@ -10,10 +10,15 @@
     <script src="plugins/jspsych-html-keyboard-response.js"></script>
     <script src="plugins/jspsych-html-button-response.js"></script>
     <script src="plugins/jspsych-image-keyboard-response.js"></script>
+    <script src="plugins/jspsych-call-function.js"></script>
     <link rel="stylesheet" href="css/jspsych.css">
 
     <style>
-                .test{font-size: 90px;font-weight: bold; color: white;}
+        .test {
+            font-size: 90px;
+            font-weight: bold;
+            color: white;
+        }
     </style>
 
     <head>
@@ -27,7 +32,9 @@
 
 </head>
 
-<body></body>
+<body>
+
+</body>
 <script>
 
 
@@ -54,10 +61,7 @@
             "<p>如果中间的箭头指向左边则摁左箭头 (<)</p>" +
             "<p>如果中间的箭头指向右边则摁右箭头 (>)</p>" +
             "<p>按任意键继续</p>",
-        post_trial_gap: 1000，
-        on_finish: function () {
-      $("body").css("cursor", "none");
-    } 
+        post_trial_gap: 1000
     };
 
     /*defining stimuli*/
@@ -80,7 +84,12 @@
         }
     ];
 
-
+    var cursor_off = {
+        type: 'call-function',
+        func: function () {
+            document.body.style.cursor = "none";
+        }
+    }
     /* defining test timeline */
     var test = {
         timeline: [{
@@ -109,6 +118,12 @@
         sample: { type: 'fixed-repetitions', size: reps_per_trial_type }
     };
 
+    var cursor_on = {
+        type: 'call-function',
+        func: function () {
+            document.body.style.cursor = "auto";
+        }
+    }
     /*defining debriefing block*/
     var debrief = {
         type: 'html-keyboard-response',
@@ -125,7 +140,7 @@
     };
 
     // manually preload images due to presenting them with timeline variables
-    var images = [ "stimu/inc1.png"];
+    var images = ["stimu/inc1.png"];
     var preload = {
         type: 'preload',
         images: images
@@ -140,7 +155,9 @@
         fullscreen_mode: true
     });
     timeline.push(instructions);
+    timeline.push(cursor_off);
     timeline.push(test);
+    timeline.push(cursor_on);
     timeline.push(debrief);
 
     /*start experiment*/
